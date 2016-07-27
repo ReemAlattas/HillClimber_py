@@ -1,6 +1,7 @@
 import numpy
 import random
 import copy
+import matplotlib as plt
 
 def MatrixCreate(rows, cols):
     # matrix = [[0 for y in range(cols)] for x in range(rows)]
@@ -23,18 +24,27 @@ def MatrixPerturb(p, prob):
                 c[x][y] = random.random()
     return c
     
+def PlotVectorAsLine(fits):
+    plt.pyplot.plot(fits[0])
+    plt.pyplot.show()
+    
+
     
 parent = MatrixCreate(1, 50)
 parent = MatrixRandomize(parent)
 parentFitness = Fitness(parent)
 
-fits = MatrixCreate(1,5000)
+fits = MatrixCreate(1, 5000)
 
 for currentGeneration in range(5000):
-      print currentGeneration, parentFitness
-      fits[currentGeneration] = parentFitness
+      #print currentGeneration, parentFitness
+      fits[0][currentGeneration] = parentFitness
       child = MatrixPerturb(parent, 0.05) 
       childFitness = Fitness(child) 
       if childFitness > parentFitness:
                 parent = child 
                 parentFitness = childFitness
+
+                
+#print(fits)            
+PlotVectorAsLine(fits)
