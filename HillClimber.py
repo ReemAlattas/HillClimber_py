@@ -24,10 +24,14 @@ def MatrixPerturb(p, prob):
     return c
     
     
-p = MatrixCreate(1, 50)
-p = MatrixRandomize(p)
-#print (p)
-print (Fitness(p))
-c = MatrixPerturb(p, 0.5)
-#print (c)
-print (Fitness(c))
+parent = MatrixCreate(1, 50)
+parent = MatrixRandomize(parent)
+parentFitness = Fitness(parent)
+
+for currentGeneration in range(5000):
+      print currentGeneration, parentFitness 
+      child = MatrixPerturb(parent, 0.05) 
+      childFitness = Fitness(child) 
+      if childFitness > parentFitness:
+                parent = child 
+                parentFitness = childFitness
