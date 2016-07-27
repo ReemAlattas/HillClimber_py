@@ -1,4 +1,3 @@
-x = 1
-if x == 1:
-    # indented four spaces
-    print "x is 1."
+def MatrixCreate(rows, cols):
+    matrix = [[0 for y in range(cols)] for x in range(rows)]
+    return matrix
