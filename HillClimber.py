@@ -19,7 +19,7 @@ def MatrixPerturb(p, prob):
     c = copy.deepcopy(p)
     for x in range(len(c)):
         for y in range(len(c[x])):
-            if prob > c[x][y]:
+            if prob > random.random():
                 c[x][y] = random.random()
     return c
     
@@ -28,8 +28,11 @@ parent = MatrixCreate(1, 50)
 parent = MatrixRandomize(parent)
 parentFitness = Fitness(parent)
 
+fits = MatrixCreate(1,5000)
+
 for currentGeneration in range(5000):
-      print currentGeneration, parentFitness 
+      print currentGeneration, parentFitness
+      fits[currentGeneration] = parentFitness
       child = MatrixPerturb(parent, 0.05) 
       childFitness = Fitness(child) 
       if childFitness > parentFitness:
