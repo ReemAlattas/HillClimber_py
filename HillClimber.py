@@ -38,17 +38,19 @@ def HillClimber():
         parentFitness = Fitness(parent)
         
         fits = MatrixCreate(1, 5000)
+        Genes = MatrixCreate(50, 5000)
         
         for currentGeneration in range(5000):
             #print currentGeneration, parentFitness
             fits[0][currentGeneration] = parentFitness
+            Genes[0][currentGeneration] = parentFitness
             child = MatrixPerturb(parent, 0.05) 
             childFitness = Fitness(child) 
             if childFitness > parentFitness:
                 parent = child 
                 parentFitness = childFitness
                         
-        print(fits)            
+        print(Genes)            
         PlotVectorAsLine(fits)
         
 HillClimber()
