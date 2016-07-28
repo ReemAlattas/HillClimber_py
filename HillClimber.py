@@ -26,25 +26,29 @@ def MatrixPerturb(p, prob):
     
 def PlotVectorAsLine(fits):
     plt.pyplot.plot(fits[0])
+    plt.pyplot.xlabel('Generation')
+    plt.pyplot.ylabel('Fitness')
     plt.pyplot.show()
     
 
-    
-parent = MatrixCreate(1, 50)
-parent = MatrixRandomize(parent)
-parentFitness = Fitness(parent)
-
-fits = MatrixCreate(1, 5000)
-
-for currentGeneration in range(5000):
-      #print currentGeneration, parentFitness
-      fits[0][currentGeneration] = parentFitness
-      child = MatrixPerturb(parent, 0.05) 
-      childFitness = Fitness(child) 
-      if childFitness > parentFitness:
+def HillClimber():
+    for i in range(5):    
+        parent = MatrixCreate(1, 50)
+        parent = MatrixRandomize(parent)
+        parentFitness = Fitness(parent)
+        
+        fits = MatrixCreate(1, 5000)
+        
+        for currentGeneration in range(5000):
+            #print currentGeneration, parentFitness
+            fits[0][currentGeneration] = parentFitness
+            child = MatrixPerturb(parent, 0.05) 
+            childFitness = Fitness(child) 
+            if childFitness > parentFitness:
                 parent = child 
                 parentFitness = childFitness
-
-                
-#print(fits)            
-PlotVectorAsLine(fits)
+                        
+        print(fits)            
+        PlotVectorAsLine(fits)
+        
+HillClimber()
