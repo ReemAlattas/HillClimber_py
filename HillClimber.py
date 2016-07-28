@@ -51,7 +51,9 @@ def HillClimber():
             for idx, val in enumerate(parent[0]):
                 Genes[idx][currentGeneration] = val
                       
-        print(Genes)            
-        PlotVectorAsLine(fits)
+        #print(Genes)            
+        #PlotVectorAsLine(fits)
+    plt.pyplot.imshow(Genes, cmap=plt.cm.gray, aspect='auto', interpolation='nearest')
+    plt.pyplot.show()
         
 HillClimber()
